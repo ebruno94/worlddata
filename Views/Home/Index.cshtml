@@ -1,0 +1,16 @@
+@using WorldData.Models;
+@{
+  Layout = "_Layout";
+}
+
+<h1>LIST OF COUNTRIES</h1>
+<form action="/search/" method="post">
+  <label for="searchId">Search by name / continent / code:</label>
+  <input type="text" name="searchId">
+  <button type="submit" name="button" id="submit">Search</button>
+</form>
+
+@foreach (KeyValuePair<string, Country> pair in Model)
+{
+  <a href="/@pair.Value.GetCode()/info"><p>@pair.Value.GetName()</p></a>
+}
